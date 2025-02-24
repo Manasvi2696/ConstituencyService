@@ -34,17 +34,6 @@ public class ConstituencyRestController {
 		return service.findAll();
 	}
 	
-//	2.find constituency detail for specific voter
-	@GetMapping("/forVoter")
-	public Constituency getConstituencyForVoter() throws ConstituencyNotFoundException{
-		Voter v = RestClient.create("http://localhost:8081/api/voter?name=ABC")
-		.get()
-		.retrieve()
-		.body(Voter.class);
-		int Id = v.getConstituencyId();
-		return service.findById(Id);
-	}
-	
 	@ResponseStatus(code=HttpStatus.OK)
 	@GetMapping("/{id}")
 	public Constituency getById(@PathVariable int id) throws ConstituencyNotFoundException {
